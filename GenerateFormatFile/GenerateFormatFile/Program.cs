@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using NDesk.Options;
 using Common;
+using Options;
 
 namespace GenerateFormatFile
 {
