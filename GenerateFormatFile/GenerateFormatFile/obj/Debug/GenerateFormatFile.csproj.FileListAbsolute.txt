@@ -1,1 +1,7 @@
 C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\bin\Debug\GenerateFormatFile.exe.config
+C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.csprojResolveAssemblyReference.cache
+C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\bin\Debug\GenerateFormatFile.exe
+C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\bin\Debug\GenerateFormatFile.pdb
+C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\bin\Debug\NDesk.Options.dll
+C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.exe
+C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.pdb
