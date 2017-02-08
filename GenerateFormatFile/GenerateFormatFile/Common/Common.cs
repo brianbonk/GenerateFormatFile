@@ -26,7 +26,7 @@ namespace Common
                                     new XAttribute(nsi + "type", "CharTerm"),
                                     new XAttribute("TERMINATOR", index == values.Length - 1 ? "\\r\\n" : delimiter),
                                     new XAttribute("MAX_LENGTH", "510"),
-                                    new XAttribute("COLLATION", "Latin1_General_CI_AS_KS_WS")
+                                    new XAttribute("COLLATION", "Latin1_General_CI_AS")
                                     )
                                 )
                             )
