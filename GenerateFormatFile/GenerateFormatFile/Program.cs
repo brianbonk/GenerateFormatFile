@@ -54,7 +54,7 @@ namespace GenerateFormatFile
                 {
                     throw new OptionException("The file '{filename}' does not exist.", "filename");
                 }
-                if (!string.IsNullOrWhiteSpace(delimiter))
+                if (string.IsNullOrWhiteSpace(delimiter))
                 {
                     throw new OptionException("The delimiter cannot be blank or empty.", "filename");
                 }
