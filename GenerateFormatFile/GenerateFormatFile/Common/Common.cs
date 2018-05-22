@@ -10,7 +10,7 @@ namespace Common
         public static XDocument GenerateXMLFile(string path, string filename, string delimiter)
         {
             var reader = new StreamReader(File.OpenRead(path + filename));
-            string[] values = reader.ReadLine().Replace(@"""", @"").Split(';');
+            string[] values = reader.ReadLine().Replace(@"""", @"").Split(delimiter.ToCharArray());
 
             var ns = XNamespace.Get("http://schemas.microsoft.com/sqlserver/2004/bulkload/format");
             var nsi = XNamespace.Get("http://www.w3.org/2001/XMLSchema-instance");
