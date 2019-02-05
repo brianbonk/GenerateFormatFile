@@ -3,3 +3,10 @@ C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFi
 C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\bin\Debug\GenerateFormatFile.pdb
 C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.exe
 C:\Users\bbo\Source\Repos\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.pdb
+S:\bblais\GitHub\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\bin\Debug\GenerateFormatFile.exe.config
+S:\bblais\GitHub\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\bin\Debug\GenerateFormatFile.exe
+S:\bblais\GitHub\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\bin\Debug\GenerateFormatFile.pdb
+S:\bblais\GitHub\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.csprojAssemblyReference.cache
+S:\bblais\GitHub\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.csproj.CoreCompileInputs.cache
+S:\bblais\GitHub\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.exe
+S:\bblais\GitHub\GenerateFormatFile\GenerateFormatFile\GenerateFormatFile\obj\Debug\GenerateFormatFile.pdb

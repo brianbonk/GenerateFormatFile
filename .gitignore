@@ -250,3 +250,5 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+GenerateFormatFile/GenerateFormatFile/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+GenerateFormatFile/GenerateFormatFile/obj/Debug/GenerateFormatFile.csproj.FileListAbsolute.txt
