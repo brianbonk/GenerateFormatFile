@@ -2,6 +2,7 @@
 using System.IO;
 using System.Data;
 using System.Xml.Linq;
+using System;
 
 namespace Common
 {
@@ -9,8 +10,17 @@ namespace Common
     {
         public static XDocument GenerateXMLFile(string path, string filename, string delimiter)
         {
+            /*
+             *Only the t, n, r, 0 and '\0' characters work with the backslash escape character to produce a control character.
+             */
+            var splitByDelimiter = delimiter;
+            splitByDelimiter = splitByDelimiter.Replace("\\t", "\t");
+            splitByDelimiter = splitByDelimiter.Replace("\\n", "\n");
+            splitByDelimiter = splitByDelimiter.Replace("\\r", "\r");
+            splitByDelimiter = splitByDelimiter.Replace("\\0", "\0");
+
             var reader = new StreamReader(File.OpenRead(path + filename));
-            string[] values = reader.ReadLine().Replace(@"""", @"").Split(delimiter.ToCharArray());
+            string[] values = reader.ReadLine().Replace(@"""", @"").Split(splitByDelimiter.ToCharArray(), StringSplitOptions.None);
 
             var ns = XNamespace.Get("http://schemas.microsoft.com/sqlserver/2004/bulkload/format");
             var nsi = XNamespace.Get("http://www.w3.org/2001/XMLSchema-instance");
@@ -25,7 +35,7 @@ namespace Common
                                     new XAttribute("ID", index + 1),
                                     new XAttribute(nsi + "type", "CharTerm"),
                                     new XAttribute("TERMINATOR", index == values.Length - 1 ? "\\r\\n" : delimiter),
-                                    new XAttribute("MAX_LENGTH", "510"),
+                                    new XAttribute("MAX_LENGTH", "8000"),
                                     new XAttribute("COLLATION", "Latin1_General_CI_AS")
                                     )
                                 )

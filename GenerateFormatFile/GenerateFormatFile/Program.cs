@@ -70,7 +70,7 @@ namespace GenerateFormatFile
 
             //do magic stuff
             var doc = HandleFile.GenerateXMLFile(path, filename, delimiter);
-            doc.Save(new StreamWriter(File.OpenWrite(path + outputfile)));
+            doc.Save(new StreamWriter(File.Open(path + outputfile, FileMode.Create)));
 
         }
         static void ShowHelp(OptionSet p)
