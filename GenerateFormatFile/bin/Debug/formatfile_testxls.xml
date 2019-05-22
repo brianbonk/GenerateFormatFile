@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BCPFORMAT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/sqlserver/2004/bulkload/format">
+  <RECORD xmlns="">
+    <FIELD ID="1" xsi:type="CharTerm" TERMINATOR="|" MAX_LENGTH="510" COLLATION="" />
+    <FIELD ID="2" xsi:type="CharTerm" TERMINATOR="|" MAX_LENGTH="510" COLLATION="" />
+    <FIELD ID="3" xsi:type="CharTerm" TERMINATOR="|" MAX_LENGTH="510" COLLATION="" />
+    <FIELD ID="4" xsi:type="CharTerm" TERMINATOR="|" MAX_LENGTH="510" COLLATION="" />
+    <FIELD ID="5" xsi:type="CharTerm" TERMINATOR="|" MAX_LENGTH="510" COLLATION="" />
+    <FIELD ID="6" xsi:type="CharTerm" TERMINATOR="\r\n" MAX_LENGTH="510" COLLATION="" />
+  </RECORD>
+  <ROW xmlns="">
+    <COLUMN SOURCE="1" NAME="ID" xsi:type="SQLNVARCHAR" />
+    <COLUMN SOURCE="2" NAME="fornavn" xsi:type="SQLNVARCHAR" />
+    <COLUMN SOURCE="3" NAME="efternavn" xsi:type="SQLNVARCHAR" />
+    <COLUMN SOURCE="4" NAME="adresse" xsi:type="SQLNVARCHAR" />
+    <COLUMN SOURCE="5" NAME="postnummer" xsi:type="SQLNVARCHAR" />
+    <COLUMN SOURCE="6" NAME="by" xsi:type="SQLNVARCHAR" />
+  </ROW>
+</BCPFORMAT>

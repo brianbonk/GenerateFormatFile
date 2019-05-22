@@ -1,0 +1,15 @@
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\GenerateFormatFile.exe
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\GenerateFormatFile.pdb
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\ExcelDataReader.dll
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\ExcelDataReader.xml
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\obj\Debug\GenerateFormatFile.exe
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\obj\Debug\GenerateFormatFile.pdb
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\GenerateFormatFile.exe.manifest
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\GenerateFormatFile.application
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\obj\Debug\GenerateFormatFile.exe.manifest
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\obj\Debug\GenerateFormatFile.application
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\bin\Debug\GenerateFormatFile.exe.config
+C:\Users\brbo\OneDrive\Arbejde\Arkitektur\GenerateFormatFile\obj\Debug\GenerateFormatFile.csproj.CoreCompileInputs.cache

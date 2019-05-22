@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
-using Common;
-using Options;
+using NDesk.Options;
+using FormatFile.Common;
+using System.Linq;
 
 namespace GenerateFormatFile
 {
@@ -10,19 +11,20 @@ namespace GenerateFormatFile
         static void Main(string[] args)
         {
 
-            string path = "";
-            string filename = "";
-            string outputfile = "";
+            string file = "";
             string delimiter = "";
             bool showHelp = false;
+            string servername = GenerateFormatFile.Properties.Settings.Default.servername;
+            string username = GenerateFormatFile.Properties.Settings.Default.username;
+            string password = GenerateFormatFile.Properties.Settings.Default.password;
+            string database = GenerateFormatFile.Properties.Settings.Default.databasename;
+            bool LoadToSQL = GenerateFormatFile.Properties.Settings.Default.loadToSQL;
 
             var p = new OptionSet()
             {
-                {"p|path=", "(req) The path to the folder containing file", (string v)=>path=v },
-                {"f|filename=", "(req) The filename to read the metadata from", (string v)=>filename=v },
-                {"o|outputfile=", "(req) The output filename (the format file)", (string v)=>outputfile=v },
-                {"d|delimiter=", "(req) The column delimiter for the header row", (string v)=>delimiter=v },
-                {"help", "show help and close", v=>showHelp = v != null },
+                {"f|path=", "(needed) The filename/folderpath of the file or folder to be processed", (string v)=>file=v },
+                {"d|delimiter=", "(needed) Defines the delimiter for the fiels", (string v)=>delimiter=v },
+                {"help", "Show this message and end", v=>showHelp = v != null },
             };
 
             try
@@ -34,29 +36,34 @@ namespace GenerateFormatFile
                     ShowHelp(p);
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(path))
+                //Check file and folder for existance
+                if (string.IsNullOrWhiteSpace(file))
                 {
-                    throw new OptionException("Path cannot be blank or empty.", "sti");
+                    throw new OptionException("Path or filename cannot be blank or empty", file);
                 }
-                if (!string.IsNullOrWhiteSpace(path) && !Directory.Exists(path))
-                {
-                    throw new OptionException("The path '{path}' does not exist.", "sti");
-                }
-                if (string.IsNullOrWhiteSpace(outputfile))
-                {
-                    throw new OptionException("The output file '{outputfile}' cannot be blank or empty.", "outputfile");
-                }
-                if (string.IsNullOrWhiteSpace(filename))
-                {
-                    throw new OptionException("Filename cannot be blank or empty.","filename");
-                }
-                if(!string.IsNullOrWhiteSpace(filename) && !File.Exists(path + filename))
-                {
-                    throw new OptionException("The file '{filename}' does not exist.", "filename");
-                }
+
+                //Check file and folder for existance
                 if (string.IsNullOrWhiteSpace(delimiter))
                 {
-                    throw new OptionException("The delimiter cannot be blank or empty.", "filename");
+                    throw new OptionException("Delimiter cannot be blank or empty", delimiter);
+                }
+
+                if (File.Exists(file))
+                {
+                    GenerateXML.HandleFile(file, delimiter);
+                }
+                else if (Directory.Exists(file))
+                {
+                    string[] fileEntries = Directory.GetFiles(file);
+
+                    foreach (string filename in fileEntries.Where(i => i.EndsWith(".csv") | i.EndsWith(".xlsx") | i.EndsWith(".xls")))
+                    {
+                        GenerateXML.HandleFile(filename, delimiter);
+                    }
+                }
+                else
+                {
+                    throw new OptionException("{0}' is not a valid file or path.", file);
                 }
 
             }
@@ -65,19 +72,16 @@ namespace GenerateFormatFile
                 Console.Write("GenerateFormatFile: ");
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Try `GenerateFormatFile --help' for more information");
+                Console.WriteLine("Path to the file: {0}", Path.GetDirectoryName(file));
                 return;
             }
-
-            //do magic stuff
-            var doc = HandleFile.GenerateXMLFile(path, filename, delimiter);
-            doc.Save(new StreamWriter(File.Open(path + outputfile, FileMode.Create)));
 
         }
         static void ShowHelp(OptionSet p)
         {
             Console.WriteLine("Use: GenerateFormatFile [OPTIONS]");
-            Console.WriteLine("Generates a formatfile to be used in dynamic import of flatfiles.");
-            Console.WriteLine("© bonk.dk 2017");
+            Console.WriteLine("Generates a predefined formatfile and can load data directly to SQL Server.");
+            Console.WriteLine("© Brian Bønk - 2018");
             Console.WriteLine();
             Console.WriteLine("Options:");
             p.WriteOptionDescriptions(Console.Out);
