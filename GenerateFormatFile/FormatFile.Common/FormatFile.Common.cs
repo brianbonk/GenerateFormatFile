@@ -33,6 +33,31 @@ namespace FormatFile.Common
                 File.Delete(file);
             }
 
+            if (delimiter == "tab")
+            {
+                Console.WriteLine("Delimter set to TAB - converting TAB to pipe '|'");
+                string text = "";
+                using (StreamReader sr = new StreamReader(file))
+                {
+                    int i = 0;
+                    do
+                    {
+                        i++;
+                        string line = sr.ReadLine();
+                        if (line != "")
+                        {
+                            line = line.Replace("\t", "|");
+                            text = text + line + Environment.NewLine;
+                        }
+                    } while (sr.EndOfStream == false);
+                }
+                File.WriteAllText(FullPath + "\\" + FileName + "Converted.csv", text);
+                //change delimiter and filename
+                delimiter = "|";
+                FileName += "Converted";
+                Console.WriteLine("New filename: {0}", FileName);
+            }
+
             Console.WriteLine("Processing CSV-file and generating XML-formatfile");
             var doc = GenerateXML.GenerateXMLFile(FullPath, "\\" + FileName + ".csv", delimiter);
             StreamWriter xmlfile = File.CreateText(FullPath + "\\formatfile_" + FileName + ".xml");
@@ -50,10 +75,10 @@ namespace FormatFile.Common
                     , FullPath + "\\" + FileName + ".csv");
             }
 
-            Console.WriteLine("Delete CSV file");
-            File.Delete(FullPath + "\\" + FileName + ".csv");
-            Console.WriteLine("Delete Format-file");
-            File.Delete(FullPath + "\\formatfile_" + FileName + ".xml");
+            //Console.WriteLine("Delete CSV file");
+            //File.Delete(FullPath + "\\" + FileName + ".csv");
+            //Console.WriteLine("Delete Format-file");
+            //File.Delete(FullPath + "\\formatfile_" + FileName + ".xml");
 
             return true;
         }
