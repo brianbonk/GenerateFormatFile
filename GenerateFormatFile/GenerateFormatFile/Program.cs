@@ -13,6 +13,7 @@ namespace GenerateFormatFile
 
             string file = "";
             string delimiter = "";
+            bool normalize = false;
             bool showHelp = false;
             string servername = GenerateFormatFile.Properties.Settings.Default.servername;
             string username = GenerateFormatFile.Properties.Settings.Default.username;
@@ -24,6 +25,7 @@ namespace GenerateFormatFile
             {
                 {"f|path=", "(needed) The filename/folderpath of the file or folder to be processed", (string v)=>file=v },
                 {"d|delimiter=", "(needed) Defines the delimiter for the fiels", (string v)=>delimiter=v },
+                {"n|normalize=", "(optional) Normalize file if rows have different number og delimiters", (bool v)=>normalize=v },
                 {"help", "Show this message and end", v=>showHelp = v != null },
             };
 
@@ -50,7 +52,7 @@ namespace GenerateFormatFile
 
                 if (File.Exists(file))
                 {
-                    GenerateXML.HandleFile(file, delimiter);
+                    GenerateXML.HandleFile(file, delimiter, normalize);
                 }
                 else if (Directory.Exists(file))
                 {
@@ -58,7 +60,7 @@ namespace GenerateFormatFile
 
                     foreach (string filename in fileEntries.Where(i => i.EndsWith(".csv") | i.EndsWith(".xlsx") | i.EndsWith(".xls")))
                     {
-                        GenerateXML.HandleFile(filename, delimiter);
+                        GenerateXML.HandleFile(filename, delimiter, normalize);
                     }
                 }
                 else

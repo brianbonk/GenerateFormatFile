@@ -13,7 +13,7 @@ namespace FormatFile.Common
 {
     public class GenerateXML
     {
-        public static bool HandleFile(string file, string delimiter)
+        public static bool HandleFile(string file, string delimiter, bool normalize)
         {
             string FileNameExtension = Path.GetExtension(file);
             string FileName = Path.GetFileNameWithoutExtension(file);
@@ -58,6 +58,41 @@ namespace FormatFile.Common
                 Console.WriteLine("New filename: {0}", FileName);
             }
 
+            if (normalize)
+            {
+                int r = 0;
+                string headerline = File.ReadLines(FullPath + "\\" + FileName + ".csv").First(); // gets the first line from file.
+                int delimitercount = (headerline.Length - headerline.Replace(delimiter, "").Length);
+                Console.WriteLine("Normalizing file");
+                string text = "";
+                using (StreamReader sr = new StreamReader(FullPath + "\\" + FileName + ".csv"))
+                {
+                    int i = 0;
+                    do
+                    {
+                        i++;
+                        string line = sr.ReadLine();
+                        if (line != "")
+                        {
+                            int linedelimiters = line.Length - line.Replace(delimiter, "").Length;
+                            if (linedelimiters < delimitercount)
+                            {
+                                r++;
+                                int missingdelimiters = delimitercount - linedelimiters;
+                                line += string.Concat(Enumerable.Repeat(delimiter, missingdelimiters));
+                            }
+                            text = text + line + Environment.NewLine;
+                        }
+                    } while (sr.EndOfStream == false);
+                }
+                if (r > 0)
+                {
+                    Console.WriteLine("Found {0} rows to be normalized", r);
+                    File.WriteAllText(FullPath + "\\" + FileName + ".csv", text);
+                }
+            }
+
+
             Console.WriteLine("Processing CSV-file and generating XML-formatfile");
             var doc = GenerateXML.GenerateXMLFile(FullPath, "\\" + FileName + ".csv", delimiter);
             StreamWriter xmlfile = File.CreateText(FullPath + "\\formatfile_" + FileName + ".xml");
@@ -82,6 +117,7 @@ namespace FormatFile.Common
 
             return true;
         }
+
         public static XDocument GenerateXMLFile(string path, string filename, string delimiter)
         {
             var reader = new StreamReader(File.OpenRead(path + filename));
